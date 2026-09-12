@@ -151,11 +151,13 @@ function bindHold(): void {
   })
   holdBtn.addEventListener('contextmenu', (event) => event.preventDefault())
 
-  const spaceTarget = (target: EventTarget | null) =>
-    target === document.body || target === document.documentElement || target === holdBtn
+  const spaceBlocked = (target: EventTarget | null) =>
+    target instanceof HTMLInputElement ||
+    target instanceof HTMLTextAreaElement ||
+    (target instanceof HTMLElement && target.isContentEditable)
 
   window.addEventListener('keydown', (event) => {
-    if (event.code !== 'Space' || event.repeat || !spaceTarget(event.target)) return
+    if (event.code !== 'Space' || event.repeat || spaceBlocked(event.target)) return
     event.preventDefault()
     beginHold()
   })

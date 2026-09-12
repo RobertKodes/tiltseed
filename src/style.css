@@ -367,11 +367,21 @@ code,
   padding-top: 0.2rem;
 }
 
+.case.is-ready .status {
+  order: 0;
+}
+
+.case.is-ready .plate {
+  order: 1;
+}
+
 .case.is-ready .gyro-wrap {
-  width: min(52vw, 14.5rem);
+  order: 2;
+  width: min(48vw, 13.5rem);
 }
 
 .case.is-ready .hold {
+  order: 3;
   height: 3.1rem;
 }
 
